@@ -1,17 +1,12 @@
+.emsm-admin-settings .icon-img-fa .fa {
+	font-size: 20px;
+}
+.emsm-admin-settings .emsm-delete .fa {
+	font-size: 20px;
+}
 #emsm-icons-overlay {
 	display: none;
 	max-width: 800px;
-/*
-	padding: 0;
-	margin: 0;
-	display: none;
-	width: 60%;
-	height: 60%;
-	background: #fff;
-	padding: 10px;
-	overflow: scroll;
-	position: relative;
-*/
 }
 .fa-icons-list {
 	padding: 0;

@@ -1,6 +1,6 @@
 <?php global $emsm_admin; ?>
 
-<div class="wrap">
+<div class="wrap emsm-admin-settings">
 	
 	<h1>EM Social Media Settings</h1>
 
