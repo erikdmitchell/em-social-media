@@ -1,26 +1,7 @@
 jQuery(document).ready(function($) {
 
+
 /*
-	var input_id;
-
-	$('.icon-modal-link').modal();
-
-	$('body').on('click','.icon-modal-link',function() {
-		input_id=$(this).data('input-id');
-	});
-
-	$('.fa-icons-list li a').click(function(e) {
-		e.preventDefault();
-
-		$('#'+input_id).val($(this).data('icon'));
-
-		$('.'+input_id+'-icon .icon-img-fa').html('');
-		$('.'+input_id+'-icon.icon-img .icon-img-fa').append('<i class="fa '+$(this).data('icon')+'"></i>');
-
-		$(".jquery-modal").fadeOut(200);
-		$("#fa-icons-overlay").fadeOut(200);
-	});
-
 	$('#default_field').parent().parent().hide();
 
 	$('#add-field').click(function(e) {
@@ -57,37 +38,58 @@ jQuery(document).ready(function($) {
 });
 
 (function ($) {
-  // initalise the dialog
-  $('#emsm-icons-overlay').dialog({
-    title: 'Select a Social Media Icon',
-    dialogClass: 'wp-dialog',
-    autoOpen: false,
-    draggable: false,
-    width: 'auto',
-    modal: true,
-    resizable: false,
-    closeOnEscape: true,
-    position: {
-      my: "center",
-      at: "center",
-      of: window
-    },
-    open: function () {
-      // close dialog by clicking the overlay behind it
-      $('.ui-widget-overlay').bind('click', function(){
-        $('#my-dialog').dialog('close');
-      })
-    },
-    create: function () {
-      // style fix for WordPress admin
-      $('.ui-dialog-titlebar-close').addClass('ui-button');
-    },
-  });
-  
-  // bind a button or a link to open the dialog
-  $('a.emsm-select-icon').on('click', function(e) {  
-    e.preventDefault();
-    $('#emsm-icons-overlay').dialog('open');
-  });
+	var slug='';
+	
+	// initalise the dialog
+	$('#emsm-icons-overlay').dialog({
+		title: 'Select a Social Media Icon',
+		dialogClass: 'wp-dialog',
+		autoOpen: false,
+		draggable: false,
+		width: 'auto',
+		modal: true,
+		resizable: false,
+		closeOnEscape: true,
+		position: {
+		  my: "center",
+		  at: "center",
+		  of: window
+		},
+		open: function () {
+		  // close dialog by clicking the overlay behind it
+		  $('.ui-widget-overlay').bind('click', function(){
+		    $('#emsm-icons-overlay').dialog('close');
+		  })
+		},
+		create: function () {
+		  // style fix for WordPress admin
+		  $('.ui-dialog-titlebar-close').addClass('ui-button');
+		},
+	});
+	
+	// bind a button or a link to open the dialog
+	$('a.emsm-select-icon').on('click', function(e) {  
+		e.preventDefault();
+
+		slug=$(this).data('inputId');
+	
+		$('#emsm-icons-overlay').dialog('open');
+	});
+
+	// an icon is selected //
+	$('.fa-icons-list li a').on('click', function(e) {
+		e.preventDefault();
+		
+		var icon=$(this).data('icon');
+	
+		// set hidden input //
+		$('#' + slug + '-icon').val(icon);
+	
+		// show new icon //
+		$('.' + slug + '-icon .icon-img-fa').html('<i class="fa ' + icon + '"></i>');
+		
+		// close dialog //
+		$('#emsm-icons-overlay').dialog('close');
+	});
   
 })(jQuery);
