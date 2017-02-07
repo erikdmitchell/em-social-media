@@ -20,5 +20,5 @@ if ( ! defined( 'WPINC' ) ) {
 define('EMSM_PATH', plugin_dir_path(__FILE__));
 define('EMSM_URL', plugin_dir_url(__FILE__));
 
-include_once(EMSM_PATH.'admin/social-media.php');
+include_once(EMSM_PATH.'admin/admin.php');
 ?>

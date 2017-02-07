@@ -21,12 +21,13 @@ class EMSocialMediaAdmin {
 	}
 
 	public function admin_scripts_styles() {
-		//wp_enqueue_style('social-media-admin-style', plugin_dir_url(dirname(__FILE__)).'/admin/css/social-media.css');
-
-		//wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery-ui-dialog'); // jquery and jquery-ui should be dependencies, didn't check though...
+		wp_enqueue_script('emsm-admin-script', EMSM_URL.'admin/js/admin.js', array('jquery-ui-dialog'), '0.1.0', true);
+		
 		//wp_enqueue_script('jquery-modal-script',plugin_dir_url(dirname(__FILE__)).'js/jquery.modal.min.js',array('jquery'),'0.5.5',true);
 		//wp_enqueue_script('social-media-script',plugin_dir_url(dirname(__FILE__)).'js/social-media.js',array('jquery'),'1.0.0',true);
 		
+		wp_enqueue_style('wp-jquery-ui-dialog');
 		wp_enqueue_style('font-awesome-style', EMSM_URL.'font-awesome/font-awesome.min.css', '', '4.7.0');
 		wp_enqueue_style('emsm-admin-style', EMSM_URL.'admin/css/admin.css', '', '0.1.0');
 	}

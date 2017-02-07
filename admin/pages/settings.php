@@ -1,9 +1,5 @@
 <?php global $emsm_admin; ?>
 
-<pre>
-	<?php //print_r($emsm_admin); ?>
-</pre>
-
 <div class="wrap">
 	
 	<h1>EM Social Media Settings</h1>
@@ -23,7 +19,7 @@
 							<input name="social_media_options[<?php echo $slug; ?>][url]" id="<?php echo $slug; ?>-url" class="regular-text code" type="url" value="<?php echo $sm['url']; ?>" />
 							<span class="<?php echo $slug; ?>-icon-icon icon-img"><span class="icon-txt">Icon: </span><span class="icon-img-fa"><i class="fa <?php echo $sm['icon']; ?>"></i></span></span>
 							
-							<a class="icon-modal-link" data-input-id="<?php echo $slug; ?>-icon" rel="modal:open" name="fa-icons-overlay" href="#fa-icons-overlay">Select Icon</a>
+							<a class="emsm-select-icon" data-input-id="<?php echo $slug; ?>-icon">Select Icon</a>
 	
 							<input type="hidden" name="social_media_options[<?php echo $slug; ?>][icon]" id="<?php echo $slug; ?>-icon" value="ICON" />
 							<input type="hidden" name="social_media_options[<?php echo $slug; ?>][name]" id="<?php echo $slug; ?>-name" value="NAME" />
@@ -41,9 +37,7 @@
 		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
 	</form>
 
-	<div id="fa-icons-overlay">
-		<a class="close-modal" rel="modal:close"></a>
-		
+	<div id="emsm-icons-overlay">
 		<ul class="fa-icons-list">
 			<?php foreach ($emsm_admin->icons as $icon) : ?>
 					<li id="<?php echo $icon['class']; ?>"><a href="#" data-icon="<?php echo $icon['class']; ?>"><i class="fa <?php echo $icon['class']; ?>"></i><?php echo $icon['name']; ?></a></li>
