@@ -13,6 +13,7 @@ class EMSocialMediaAdmin {
 	 * @return void
 	 */
 	public function __construct() {
+		add_action('admin_init', array($this, 'update_settings'));
 		add_action('admin_menu', array($this, 'add_plugin_page'));
 		add_action('admin_enqueue_scripts', array($this, 'admin_scripts_styles'));
 
@@ -20,12 +21,15 @@ class EMSocialMediaAdmin {
 		$this->icons=$this->get_fa_arr();
 	}
 
+	/**
+	 * admin_scripts_styles function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function admin_scripts_styles() {
-		wp_enqueue_script('jquery-ui-dialog'); // jquery and jquery-ui should be dependencies, didn't check though...
+		wp_enqueue_script('jquery-ui-dialog');
 		wp_enqueue_script('emsm-admin-script', EMSM_URL.'admin/js/admin.js', array('jquery-ui-dialog'), '0.1.0', true);
-		
-		//wp_enqueue_script('jquery-modal-script',plugin_dir_url(dirname(__FILE__)).'js/jquery.modal.min.js',array('jquery'),'0.5.5',true);
-		//wp_enqueue_script('social-media-script',plugin_dir_url(dirname(__FILE__)).'js/social-media.js',array('jquery'),'1.0.0',true);
 		
 		wp_enqueue_style('wp-jquery-ui-dialog');
 		wp_enqueue_style('font-awesome-style', EMSM_URL.'font-awesome/font-awesome.min.css', '', '4.7.0');
@@ -49,6 +53,7 @@ class EMSocialMediaAdmin {
 	 * @return void
 	 */
 	public function setup_social_media() {
+		$stored=get_option('emsm_social_media', array());
 		$default=array(
 			'facebook' => array(
 				'name' => 'Facebook',
@@ -61,8 +66,9 @@ class EMSocialMediaAdmin {
 				'icon' => 'fa-twitter-square'
 			)
 		);
+		$args=wp_parse_args_multi($stored, $default);
 
-		return $default;
+		return $args;
 	}
 
 	/**
@@ -73,6 +79,21 @@ class EMSocialMediaAdmin {
 	 */
 	public function admin_page() {
 		echo $this->get_admin_page('settings');
+	}
+
+	/**
+	 * update_settings function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function update_settings() {
+		if (!isset($_POST['emsm_admin']) || !wp_verify_nonce($_POST['emsm_admin'], 'update_settings'))
+			return; 
+		
+		update_option('emsm_social_media', $_POST['social_media_options']);
+		
+		$this->social_media=$this->setup_social_media();
 	}
 
 	/**
@@ -135,4 +156,28 @@ class EMSocialMediaAdmin {
 }
 
 $emsm_admin=new EMSocialMediaAdmin();
+
+/**
+ * wp_parse_args_multi function.
+ * 
+ * Similar to wp_parse_args() just a bit extended to work with multidimensional arrays
+ *
+ * @access public
+ * @param mixed &$a
+ * @param mixed $b
+ * @return void
+ */
+function wp_parse_args_multi( &$a, $b ) {
+	$a = (array) $a;
+	$b = (array) $b;
+	$result = $b;
+	foreach ( $a as $k => &$v ) {
+		if ( is_array( $v ) && isset( $result[ $k ] ) ) {
+			$result[ $k ] = wp_parse_args_multi( $v, $result[ $k ] );
+		} else {
+			$result[ $k ] = $v;
+		}
+	}
+	return $result;
+}
 ?>

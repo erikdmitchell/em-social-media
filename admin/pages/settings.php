@@ -1,13 +1,13 @@
 <?php global $emsm_admin; ?>
 <pre>
-<?php print_r($_POST); ?>
+<?php print_r($emsm_admin->social_media); ?>
 </pre>
 <div class="wrap">
 	
 	<h1>EM Social Media Settings</h1>
 
 	<form method="post" action="">
-		<?php wp_nonce_field('update_settings', 'em_social_meida_admin'); ?>
+		<?php wp_nonce_field('update_settings', 'emsm_admin'); ?>
 	
 		<table class="form-table">
 			<tbody>
@@ -15,7 +15,7 @@
 				<?php foreach ($emsm_admin->social_media as $slug => $sm) : ?>
 
 					<tr>
-						<th scope="row"><?php echo $sm['name']; ?></th>
+						<th scope="row"><input type="text" name="social_media_options[<?php echo $slug; ?>][name]" id="<?php echo $slug; ?>-name" value="<?php echo $sm['name']; ?>" /></th>
 						<td>
 
 							<input name="social_media_options[<?php echo $slug; ?>][url]" id="<?php echo $slug; ?>-url" class="regular-text code" type="url" value="<?php echo $sm['url']; ?>" />
@@ -24,7 +24,6 @@
 							<a class="emsm-select-icon" data-input-id="<?php echo $slug; ?>">Select Icon</a>
 	
 							<input type="hidden" name="social_media_options[<?php echo $slug; ?>][icon]" id="<?php echo $slug; ?>-icon" value="<?php echo $sm['icon']; ?>" />
-							<input type="hidden" name="social_media_options[<?php echo $slug; ?>][name]" id="<?php echo $slug; ?>-name" value="<?php echo $sm['name']; ?>" />
 
 						</td>
 					</tr>
