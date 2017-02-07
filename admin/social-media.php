@@ -3,32 +3,24 @@ global $emsm_admin;
 
 class EMSocialMediaAdmin {
 
-	public $option_name='em_social_media_options';
+	public $social_media;
 
-	function __construct() {
+	public function __construct() {
 		add_action('admin_menu', array($this, 'add_plugin_page'));
-		
-		
-		
-		add_action('wp_enqueue_scripts',array($this,'scripts_styles'));
-		add_action('admin_enqueue_scripts',array($this,'admin_scripts_styles'));
+		add_action('admin_enqueue_scripts', array($this, 'admin_scripts_styles'));
 
-		$this->default_options=$this->setup_default_options();
-
-
+		$this->social_media=$this->setup_social_media();
 	}
 
-	function scripts_styles() {
-		wp_enqueue_style('font-awesome-css','//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',array(),'4.2.0');
-	}
+	public function admin_scripts_styles() {
+		//wp_enqueue_style('font-awesome-css','//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',array(),'4.2.0');
+		//wp_enqueue_style('social-media-admin-style', plugin_dir_url(dirname(__FILE__)).'/admin/css/social-media.css');
 
-	function admin_scripts_styles() {
-		wp_enqueue_style('font-awesome-css','//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',array(),'4.2.0');
-		wp_enqueue_style('social-media-admin-style', plugin_dir_url(dirname(__FILE__)).'/admin/css/social-media.css');
-
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('jquery-modal-script',plugin_dir_url(dirname(__FILE__)).'js/jquery.modal.min.js',array('jquery'),'0.5.5',true);
-		wp_enqueue_script('social-media-script',plugin_dir_url(dirname(__FILE__)).'js/social-media.js',array('jquery'),'1.0.0',true);
+		//wp_enqueue_script('jquery');
+		//wp_enqueue_script('jquery-modal-script',plugin_dir_url(dirname(__FILE__)).'js/jquery.modal.min.js',array('jquery'),'0.5.5',true);
+		//wp_enqueue_script('social-media-script',plugin_dir_url(dirname(__FILE__)).'js/social-media.js',array('jquery'),'1.0.0',true);
+		
+		wp_enqueue_style('font-awesome-style', EMSM_URL.'font-awesome/font-awesome.min.css', array(), '4.7.0');
 	}
 
 	/**
@@ -41,8 +33,14 @@ class EMSocialMediaAdmin {
     	add_options_page('Social Media','Social Media','manage_options','em-social-media', array($this, 'admin_page'));
 	}
 
-	function setup_default_options() {
-		$options=array(
+	/**
+	 * setup_settings function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function setup_social_media() {
+		$default=array(
 			'facebook' => array(
 				'name' => 'Facebook',
 				'url' => 'https://www.facebook.com/WordPress',
@@ -51,11 +49,11 @@ class EMSocialMediaAdmin {
 			'twitter' => array(
 				'name' => 'Twitter',
 				'url' => 'https://twitter.com/wordpress',
-				'icon' =>	'fa-twitter-square'
+				'icon' => 'fa-twitter-square'
 			)
 		);
 
-		return $options;
+		return $default;
 	}
 
 	/**

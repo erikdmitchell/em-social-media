@@ -1,3 +1,9 @@
+<?php global $emsm_admin; ?>
+
+<pre>
+	<?php print_r($emsm_admin); ?>
+</pre>
+
 <div class="wrap">
 	
 	<h1>EM Social Media Settings</h1>
@@ -7,20 +13,26 @@
 	
 		<table class="form-table">
 			<tbody>
-				<tr>
-					<th scope="row">Name?</th>
-					<td>
-						<fieldset>
-							<legend class="screen-reader-text"><span><?php echo $name; ?></span></legend>
-							<input name="social_media_options[<?php echo $slug; ?>][url]" id="<?php echo $slug; ?>-url" class="regular-text code" type="url" value="VALUE" />
-							<span class="<?php echo $slug; ?>-icon-icon icon-img"><span class="icon-txt">Icon: </span><span class="icon-img-fa"><i class="fa VALUE"></i></span></span>
+				
+				<?php foreach ($emsm_admin->social_media as $slug => $sm) : ?>
+
+					<tr>
+						<th scope="row"><?php echo $sm['name']; ?></th>
+						<td>
+
+							<input name="social_media_options[<?php echo $slug; ?>][url]" id="<?php echo $slug; ?>-url" class="regular-text code" type="url" value="<?php echo $sm['url']; ?>" />
+							<span class="<?php echo $slug; ?>-icon-icon icon-img"><span class="icon-txt">Icon: </span><span class="icon-img-fa"><i class="fa <?php echo $sm['icon']; ?>"></i></span></span>
+							
 							<a class="icon-modal-link" data-input-id="<?php echo $slug; ?>-icon" rel="modal:open" name="fa-icons-overlay" href="#fa-icons-overlay">Select Icon</a>
 	
 							<input type="hidden" name="social_media_options[<?php echo $slug; ?>][icon]" id="<?php echo $slug; ?>-icon" value="ICON" />
 							<input type="hidden" name="social_media_options[<?php echo $slug; ?>][name]" id="<?php echo $slug; ?>-name" value="NAME" />
-						</fieldset>
-					</td>
-				</tr>
+
+						</td>
+					</tr>
+				
+				<?php endforeach; ?>
+				
 			</tbody>
 		</table>
 	
