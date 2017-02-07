@@ -1,14 +1,14 @@
 <?php
 /*
- * Plugin Name: Simple Social Media
+ * Plugin Name: EM Social Media
  * Plugin URI: 
- * Description: Allows you to add links to your social media pages/profiels via widget or shortcode.
+ * Description: Allows you to add links to your social media pages/profiles via widget or shortcode.
  * Version: 0.1.0
  * Author: Erik Mitchell
  * Author URI: http://erikmitchell.net
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: ssm
+ * Text Domain: emsm
  * Domain Path: /languages
 */
 
@@ -17,5 +17,5 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define('SSM_PATH', plugin_dir_path(__FILE__));
+define('EMSM_PATH', plugin_dir_path(__FILE__));
 ?>
