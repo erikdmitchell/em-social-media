@@ -7,6 +7,12 @@
  */
 class EMSMWidget extends WP_Widget {
 
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function __construct() {
 		parent::__construct(
 			'emsm_widget',
@@ -15,6 +21,14 @@ class EMSMWidget extends WP_Widget {
 		);
 	}
 
+	/**
+	 * widget function.
+	 * 
+	 * @access public
+	 * @param mixed $args
+	 * @param mixed $instance
+	 * @return void
+	 */
 	public function widget( $args, $instance ) {
 		echo $args['before_widget'];
 		
@@ -28,8 +42,15 @@ class EMSMWidget extends WP_Widget {
 		echo $args['after_widget'];
 	}
 
+	/**
+	 * form function.
+	 * 
+	 * @access public
+	 * @param mixed $instance
+	 * @return void
+	 */
 	public function form($instance) {
-		$title = ! empty($instance['title']) ? $instance['title'] : __( 'Social Media', 'emsm');
+		$title = !empty($instance['title']) ? $instance['title'] : __( 'Social Media', 'emsm');
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
@@ -38,6 +59,14 @@ class EMSMWidget extends WP_Widget {
 		<?php
 	}
 
+	/**
+	 * update function.
+	 * 
+	 * @access public
+	 * @param mixed $new_instance
+	 * @param mixed $old_instance
+	 * @return void
+	 */
 	public function update($new_instance, $old_instance) {
 		$instance = array();
 		$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';

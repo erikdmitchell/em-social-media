@@ -14,17 +14,25 @@ Allows you to add links to your social media pages/profiles via widget or shortc
 
 Allows you to add links to your social media pages/profiles via widget or shortcode.
 
+The widget is a standard widget with a title.
+
+The shortcode is [emsm].
+
 == Installation ==
 
-1. Upload `simple-social-media` to the `/wp-content/plugins/` directory
+1. Upload `em-social-media` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. The plugin will generate all the pages with the proper shortcode.
+3. Go to Settings > Social Media to update.
 
 == Frequently Asked Questions ==
+
+None
 
 == Screenshots ==
 
 == Hooks and Filters ==
+
+None
 
 == Changelog ==
 
