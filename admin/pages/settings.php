@@ -42,7 +42,7 @@
 	</form>
 
 			$html=null;
-		$fa_icons=$this->get_fa_arr();
+		
 
 		$html.='<div id="fa-icons-overlay">';
 			$html.='<a class="close-modal" rel="modal:close"></a>';
