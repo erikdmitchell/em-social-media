@@ -20,6 +20,8 @@
 							<span class="<?php echo $slug; ?>-icon icon-img"><span class="icon-txt">Icon: </span><span class="icon-img-fa"><i class="fa <?php echo $sm['icon']; ?>"></i></span></span>
 							
 							<a class="emsm-select-icon" data-input-id="<?php echo $slug; ?>">Select Icon</a>
+							
+							<a href="" class="emsm-delete" data-rowid="emsm-<?php echo $slug; ?>"><i class="fa fa-trash"></i></a>
 	
 							<input type="hidden" name="social_media_options[<?php echo $slug; ?>][icon]" id="<?php echo $slug; ?>-icon" value="<?php echo $sm['icon']; ?>" />
 

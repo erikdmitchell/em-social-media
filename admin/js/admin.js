@@ -1,9 +1,19 @@
 jQuery(document).ready(function($) {
 
+	// add field (row) //
 	$('#emsm-add-field').on('click', function(e) {  
 		e.preventDefault();
 
 		addNewRow();
+	});
+	
+	// delete row //
+	$('#emsm-social-media-table').on('click', 'a.emsm-delete', function(e) {
+		e.preventDefault();
+		
+		var rowID=$(this).data('rowid');
+		
+		$('#' + rowID).remove();
 	});
 
 });
@@ -150,8 +160,7 @@ function clearIcon($div, newSlug) {
 		e.preventDefault();
 		
 		var icon=$(this).data('icon');
-console.log(icon);
-console.log(slug);	
+	
 		// set hidden input //
 		$('#' + slug + '-icon').val(icon);
 	
