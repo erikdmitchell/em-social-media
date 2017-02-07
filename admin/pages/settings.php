@@ -1,7 +1,5 @@
 <?php global $emsm_admin; ?>
-<pre>
-<?php print_r($emsm_admin->social_media); ?>
-</pre>
+
 <div class="wrap">
 	
 	<h1>EM Social Media Settings</h1>
