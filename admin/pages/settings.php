@@ -1,7 +1,7 @@
 <?php global $emsm_admin; ?>
 
 <pre>
-	<?php print_r($emsm_admin); ?>
+	<?php //print_r($emsm_admin); ?>
 </pre>
 
 <div class="wrap">
@@ -41,18 +41,14 @@
 		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
 	</form>
 
-			$html=null;
+	<div id="fa-icons-overlay">
+		<a class="close-modal" rel="modal:close"></a>
 		
-
-		$html.='<div id="fa-icons-overlay">';
-			$html.='<a class="close-modal" rel="modal:close"></a>';
-			$html.='<ul class="fa-icons-list">';
-				foreach ($fa_icons as $icon) :
-					$html.='<li id="'.$icon['class'].'"><a href="#" data-icon="'.$icon['class'].'"><i class="fa '.$icon['class'].'"></i>'.$icon['name'].'</a></li>';
-				endforeach;
-			$html.='</ul>';
-		$html.='</div>';
-
-		return $html;
+		<ul class="fa-icons-list">
+			<?php foreach ($emsm_admin->icons as $icon) : ?>
+					<li id="<?php echo $icon['class']; ?>"><a href="#" data-icon="<?php echo $icon['class']; ?>"><i class="fa <?php echo $icon['class']; ?>"></i><?php echo $icon['name']; ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
 	
 </div>

@@ -4,7 +4,7 @@ global $emsm_admin;
 class EMSocialMediaAdmin {
 
 	public $social_media;
-	public $fa_icons;
+	public $icons;
 
 	/**
 	 * __construct function.
@@ -17,7 +17,7 @@ class EMSocialMediaAdmin {
 		add_action('admin_enqueue_scripts', array($this, 'admin_scripts_styles'));
 
 		$this->social_media=$this->setup_social_media();
-		$this->fa_icons=$this->get_fa_arr();
+		$this->icons=$this->get_fa_arr();
 	}
 
 	public function admin_scripts_styles() {
@@ -27,7 +27,8 @@ class EMSocialMediaAdmin {
 		//wp_enqueue_script('jquery-modal-script',plugin_dir_url(dirname(__FILE__)).'js/jquery.modal.min.js',array('jquery'),'0.5.5',true);
 		//wp_enqueue_script('social-media-script',plugin_dir_url(dirname(__FILE__)).'js/social-media.js',array('jquery'),'1.0.0',true);
 		
-		wp_enqueue_style('font-awesome-style', EMSM_URL.'font-awesome/font-awesome.min.css', array(), '4.7.0');
+		wp_enqueue_style('font-awesome-style', EMSM_URL.'font-awesome/font-awesome.min.css', '', '4.7.0');
+		wp_enqueue_style('emsm-admin-style', EMSM_URL.'admin/css/admin.css', '', '0.1.0');
 	}
 
 	/**
