@@ -88,12 +88,20 @@ class EMSocialMediaAdmin {
 	 * @return void
 	 */
 	public function update_settings() {
+		$smo=array();
+		
 		if (!isset($_POST['emsm_admin']) || !wp_verify_nonce($_POST['emsm_admin'], 'update_settings'))
 			return; 
-echo '<pre>';
-print_r($_POST['social_media_options']);
-echo '</pre>';		
-		//update_option('emsm_social_media', $_POST['social_media_options']);
+
+		foreach ($_POST['social_media_options'] as $slug => $data) :
+			if (empty($data['name']))
+				continue;
+				
+			$new_slug=sanitize_key($data['name']);
+			$smo[$new_slug]=$data;
+		endforeach;	
+
+		update_option('emsm_social_media', $smo);
 		
 		$this->social_media=$this->setup_social_media();
 	}
