@@ -9,12 +9,12 @@
 	<form method="post" action="">
 		<?php wp_nonce_field('update_settings', 'emsm_admin'); ?>
 	
-		<table class="form-table">
+		<table id="emsm-social-media-table" class="form-table">
 			<tbody>
 				
 				<?php foreach ($emsm_admin->social_media as $slug => $sm) : ?>
 
-					<tr>
+					<tr id="emsm-<?php echo $slug; ?>">
 						<th scope="row"><input type="text" name="social_media_options[<?php echo $slug; ?>][name]" id="<?php echo $slug; ?>-name" value="<?php echo $sm['name']; ?>" /></th>
 						<td>
 
@@ -33,7 +33,7 @@
 			</tbody>
 		</table>
 	
-		<input type="button" name="add-field" id="add-field" class="button button-primary add-field" value="Add Field">
+		<input type="button" name="add-field" id="emsm-add-field" class="button button-secondary add-field" value="Add Social Media">
 	
 		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
 	</form>

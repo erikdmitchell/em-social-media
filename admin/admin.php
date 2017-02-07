@@ -90,8 +90,10 @@ class EMSocialMediaAdmin {
 	public function update_settings() {
 		if (!isset($_POST['emsm_admin']) || !wp_verify_nonce($_POST['emsm_admin'], 'update_settings'))
 			return; 
-		
-		update_option('emsm_social_media', $_POST['social_media_options']);
+echo '<pre>';
+print_r($_POST['social_media_options']);
+echo '</pre>';		
+		//update_option('emsm_social_media', $_POST['social_media_options']);
 		
 		$this->social_media=$this->setup_social_media();
 	}
