@@ -23,4 +23,5 @@ define('EMSM_URL', plugin_dir_url(__FILE__));
 include_once(EMSM_PATH.'admin/admin.php');
 include_once(EMSM_PATH.'shortcode.php');
 include_once(EMSM_PATH.'functions.php');
+include_once(EMSM_PATH.'widget.php');
 ?>

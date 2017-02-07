@@ -1,3 +1,6 @@
+.emsm-display-wrap {
+	overflow: hidden;
+}
 .emsm-social-media-list {
 	list-style-type: none;
 	padding: 0;
