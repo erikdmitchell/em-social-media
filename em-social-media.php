@@ -18,4 +18,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define('EMSM_PATH', plugin_dir_path(__FILE__));
+
+include_once(EMSM_PATH.'admin/social-media.php');
 ?>
