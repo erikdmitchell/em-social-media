@@ -17,10 +17,11 @@ jQuery(document).ready(function($) {
 function addNewRow() {
 	var $clone=jQuery('#emsm-social-media-table tr:last').clone();
 	var oldSlug=$clone.attr('id').replace('emsm-', '');	
+	var newSlug=generateID();
 
 	clearFormElements($clone);
-	clearOldSlug($clone, oldSlug);
-	clearIcon($clone, oldSlug);
+	clearOldSlug($clone, oldSlug, newSlug);
+	clearIcon($clone, newSlug);
 	
 	jQuery('#emsm-social-media-table').append($clone);
 }
@@ -63,20 +64,32 @@ function clearFormElements($div) {
  * @access public
  * @param mixed $div
  * @param mixed slug
+ * @param mixed newSlug
  * @return void
  */
-function clearOldSlug($div, slug) {
+function clearOldSlug($div, slug, newSlug) {
 	// clear ids and names //
+	
 	$div.find(':input').each(function() {
-		var newID=this.id.replace(slug, 'default');
-		var newName=this.name.replace(slug, 'default');;
+		var newID=this.id.replace(slug, newSlug);
+		var newName=this.name.replace(slug, newSlug);
 
 		jQuery(this).attr('id', newID);
 		jQuery(this).attr('name', newName);
 	});
 	
 	// adjust data for select icon link //
-	$div.find('a.emsm-select-icon').data('inputId', 'default');
+	$div.find('a.emsm-select-icon').attr('data-input-id', newSlug);
+}
+
+/**
+ * generateID function.
+ * 
+ * @access public
+ * @return void
+ */
+function generateID() {
+	return '_' + Math.random().toString(36).substr(2, 9);
 }
 
 /**
@@ -84,11 +97,11 @@ function clearOldSlug($div, slug) {
  * 
  * @access public
  * @param mixed $div
- * @param mixed slug
+ * @param mixed newSlug
  * @return void
  */
-function clearIcon($div, slug) {
-	$div.find('span.icon-img').attr('class', 'default-icon icon-img');
+function clearIcon($div, newSlug) {
+	$div.find('span.icon-img').attr('class', newSlug + '-icon icon-img');
 	$div.find('.icon-img-fa').html('');
 }
 
