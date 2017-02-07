@@ -66,6 +66,7 @@ function clearFormElements($div) {
  * @return void
  */
 function clearOldSlug($div, slug) {
+	// clear ids and names //
 	$div.find(':input').each(function() {
 		var newID=this.id.replace(slug, 'default');
 		var newName=this.name.replace(slug, 'default');;
@@ -73,6 +74,9 @@ function clearOldSlug($div, slug) {
 		jQuery(this).attr('id', newID);
 		jQuery(this).attr('name', newName);
 	});
+	
+	// adjust data for select icon link //
+	$div.find('a.emsm-select-icon').data('inputId', 'default');
 }
 
 /**
@@ -120,8 +124,7 @@ function clearIcon($div, slug) {
 	});
 	
 	// bind a button or a link to open the dialog
-	$('#emsm-social-media-table').on('click', 'a.emsm-select-icon', function(e) { 
-console.log('click');		 
+	$('#emsm-social-media-table').on('click', 'a.emsm-select-icon', function(e) { 		 
 		e.preventDefault();
 
 		slug=$(this).data('inputId');
@@ -134,7 +137,8 @@ console.log('click');
 		e.preventDefault();
 		
 		var icon=$(this).data('icon');
-	
+console.log(icon);
+console.log(slug);	
 		// set hidden input //
 		$('#' + slug + '-icon').val(icon);
 	
