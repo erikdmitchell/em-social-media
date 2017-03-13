@@ -3,7 +3,7 @@
  * Plugin Name: EM Social Media
  * Plugin URI: 
  * Description: Allows you to add links to your social media pages/profiles via widget or shortcode.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: Erik Mitchell
  * Author URI: http://erikmitchell.net
  * License: GPL-2.0+

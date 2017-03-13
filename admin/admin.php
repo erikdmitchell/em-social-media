@@ -54,8 +54,24 @@ class EMSocialMediaAdmin {
 	 * @return void
 	 */
 	public function setup_social_media() {
-		$stored=get_option('emsm_social_media', array());
-		$default=array(
+		$args=get_option('emsm_social_media', $this->_default_args());
+
+		// sort by order //
+		@usort($args, function($a, $b) {
+			return $a['order'] - $b['order'];
+		});
+
+		return $args;
+	}
+	
+	/**
+	 * _default_args function.
+	 * 
+	 * @access protected
+	 * @return void
+	 */
+	protected function _default_args() {
+		return array(
 			'facebook' => array(
 				'name' => 'Facebook',
 				'url' => 'https://www.facebook.com/WordPress',
@@ -69,14 +85,6 @@ class EMSocialMediaAdmin {
 				'order' => 2,
 			)
 		);
-		$args=wp_parse_args_multi($stored, $default);
-
-		// sort by order //
-		usort($args, function($a, $b) {
-			return $a['order'] - $b['order'];
-		});
-
-		return $args;
 	}
 
 	/**

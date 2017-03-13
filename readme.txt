@@ -4,7 +4,7 @@ Donate link: erikdmitchell@gmail.com
 Tags: social media, widget, shortcode
 Requires at least: 4.0
 Tested up to: 4.7.3
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,11 @@ None
 None
 
 == Changelog ==
+
+= 0.1.2 =
+
+* Cleaned up default settings.
+* Fixed potential (known) usort bug.
 
 = 0.1.1 =
 
