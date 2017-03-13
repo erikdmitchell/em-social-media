@@ -1,3 +1,7 @@
+#emsm-social-media-table .ui-state-default {
+	background: transparent;
+	border: none;
+}
 .emsm-admin-settings .icon-img-fa .fa {
 	font-size: 20px;
 }

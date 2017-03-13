@@ -115,6 +115,28 @@ function clearIcon($div, newSlug) {
 	$div.find('.icon-img-fa').html('');
 }
 
+// make list sortable //
+jQuery(function($) {
+	$("#emsm-sortable").sortable({
+		update: function(event, ui) {
+			reorderSort();			
+		}
+	});
+	$("#emsm-sortable").disableSelection();
+});
+
+/**
+ * reorderSort function.
+ * 
+ * @access public
+ * @return void
+ */
+function reorderSort() {
+	jQuery('#emsm-sortable tr').each(function(i) {	
+		jQuery(this).find('input.order').val(i);
+	});
+}
+
 // select icon dialog //
 (function ($) {
 	var slug='';

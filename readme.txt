@@ -3,8 +3,8 @@ Contributors: erikdmitchell
 Donate link: erikdmitchell@gmail.com
 Tags: social media, widget, shortcode
 Requires at least: 4.0
-Tested up to: 4.7.2
-Stable tag: 0.1.0
+Tested up to: 4.7.3
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,11 @@ None
 None
 
 == Changelog ==
+
+= 0.1.1 =
+
+* Drag and drop sortable order for social media.
+* Fixed issue where Facebook default setting would not delete.
 
 = 0.1.0 =
 

@@ -30,7 +30,7 @@ function emsm_display_social_media($args='') {
 	if (!count($emsm_social_media))
 		return;
 		
-	$html='<div class="emsm-display-wrap">';	
+	$html='<div class="emsm-display-wrap social_links">';	
 	
 		$html.='<ul class="emsm-social-media-list">';
 			foreach ($emsm_social_media as $slug => $sm) :

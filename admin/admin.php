@@ -29,7 +29,8 @@ class EMSocialMediaAdmin {
 	 */
 	public function admin_scripts_styles() {
 		wp_enqueue_script('jquery-ui-dialog');
-		wp_enqueue_script('emsm-admin-script', EMSM_URL.'admin/js/admin.js', array('jquery-ui-dialog'), '0.1.0', true);
+		wp_enqueue_script('jquery-ui-sortable');
+		wp_enqueue_script('emsm-admin-script', EMSM_URL.'admin/js/admin.js', array('jquery-ui-dialog', 'jquery-ui-sortable'), '0.1.0', true);
 		
 		wp_enqueue_style('wp-jquery-ui-dialog');
 		wp_enqueue_style('font-awesome-style', EMSM_URL.'font-awesome/font-awesome.min.css', '', '4.7.0');
@@ -58,15 +59,22 @@ class EMSocialMediaAdmin {
 			'facebook' => array(
 				'name' => 'Facebook',
 				'url' => 'https://www.facebook.com/WordPress',
-				'icon' => 'fa-facebook-square'
+				'icon' => 'fa-facebook-square',
+				'order' => 1,
 			),
 			'twitter' => array(
 				'name' => 'Twitter',
 				'url' => 'https://twitter.com/wordpress',
-				'icon' => 'fa-twitter-square'
+				'icon' => 'fa-twitter-square',
+				'order' => 2,
 			)
 		);
 		$args=wp_parse_args_multi($stored, $default);
+
+		// sort by order //
+		usort($args, function($a, $b) {
+			return $a['order'] - $b['order'];
+		});
 
 		return $args;
 	}
